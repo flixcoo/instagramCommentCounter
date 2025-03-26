@@ -3,6 +3,8 @@ from collections import Counter
 
 # Stopwords (common words that are not relevant for the analysis)
 STOPWORDS = {"example1", "example2", "example3"}
+consoleUpdates = 20  # Print progress every 20 comments
+top10Updates = 200  # Print top 10 words every 200 comments
 
 # Shortcode of the post to be analyzed
 # Example: "https://www.instagram.com/p/ABC123DEF/" -> SHORTCODE = "ABC123DEF"
@@ -32,10 +34,10 @@ print(f"Start scanning comments of Post {SHORTCODE}...")
 
 for comment in post.get_comments():
     # Print progress every 20 comments
-    if comment_count % 20 == 0 and comment_count != 0:
+    if comment_count % consoleUpdates == 0 and comment_count != 0:
         print(f"Scanning comments... {comment_count} / {total_comments}")  
     # Print top 10 words every 200 comments
-    if(comment_count % 200 == 0 and comment_count != 0):
+    if(comment_count % top10Updates == 0 and comment_count != 0):
         printTopTen()
     
     comment_count += 1
